@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MYCHATAPPN</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="ui container">
+  <div class="ui inverted small menu">
+  <%= link_to "Home",root_path, class: "active item" %>
+  <%= link_to "Messages",chatroom_index_path, class: "item" %>
+  <div class="right menu">
+    <div class="ui dropdown item">
+      Account <i class="dropdown icon"></i>
+      <div class="menu">
+      <% if logged_in? %>
+      <%= link_to "Logout", logout_path, method: :delete, class: "item" %>
+      <% else %>
+      <%= link_to "Login",login_path, class: "item" %>
+      <% end %>
+      </div>
+    </div>
+    <div class="item">
+    <%= link_to "Sign Up",signup_path, class: "ui primary button" %>
+  </div>
+</div>
+
+  </div>
+  <div class="ui container">
+    <%= yield %>
+  </div>  
+  </body>
+</html>
